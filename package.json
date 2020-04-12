@@ -1,0 +1,36 @@
+{
+  "name": "react-factory",
+  "version": "1.0.0",
+  "description": "This is a development environtment to create react components with the use of storybook",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "keywords": [
+    "storybook",
+    "react",
+    "component",
+    "components",
+    "React",
+    "front-end"
+  ],
+  "author": "David Kwakernaak",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "babel-loader": "^8.1.0",
+    "babel-preset-minify": "^0.5.1"
+  },
+  "dependencies": {}
+}

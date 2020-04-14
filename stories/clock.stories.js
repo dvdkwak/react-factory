@@ -1,5 +1,5 @@
 import React from 'react';
-import DigitalClock from './../components/clock/DigitalClock';
+import DigitalClock from '../components/clock/DigitalClock';
 
 // creating the category (storybook)
 export default {

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-loader-yinyang": "./node_modules/.bin/babel components/loader/YinYang --out-file components/loader/YinYang/dist/index.js",
+    "build-clock-digitalclock": "./node_modules/.bin/babel components/clock/DigitalClock --out-file components/clock/DigitalClock/dist/index.js"
   },
   "keywords": [
     "storybook",
@@ -25,8 +27,11 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-storysource": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",

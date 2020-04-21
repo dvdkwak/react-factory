@@ -49,6 +49,14 @@ import './${componentName}.css';
  * \|\| yarn storybook \|\|
  *  \\\\--------------\/\/
  * 
+ * Or build this component for production by using the command:
+ * 
+ *  \/\/--------------------------\\\\
+ * \|\| yarn build_[componentName] \|\|
+ *  \\\\--------------------------\/\/
+ * 
+ * ( yarn build_${componentName} )
+ * 
  * Now you are ready to start! Happy Coding!
  */
 
@@ -161,9 +169,9 @@ if(!fs.existsSync(storyName)) {
 // Adapting the package.json file to add a build function BUILD
 // ad a new script to the script
 let packagejsoncommand = `./node_modules/.bin/babel components/${componentName} --out-file components/${componentName}/dist/index.js`;
-packagejsondata.scripts[componentName + "-build"] = packagejsoncommand;
+packagejsondata.scripts["build_" + componentName] = packagejsoncommand;
 // reverting the data to a string to write the file
 let packagejsonnew = JSON.stringify(packagejsondata, null, 2);
 // overwriting the old package.json with the new data
 fs.writeFileSync('./package.json', packagejsonnew);
-console.log(`The function \"build_${componentName}\" has been added to the scripts! use it to export your component!`);
+console.log(`The function \"build_${componentName}\" has been added to the scripts! use it to export your component!`.bgGreen);

@@ -1,5 +1,11 @@
 /**
 This file is the automation to create a new component within the react-factory
+This will add the folowing:
+- component folder in which the component lives
+- component index.js which is the heart of the component
+- component css file which is the first styling sheet for the component
+- story file with the basic settings to show your component in the storybook
+- will ad a build function so you can build the component with 'yarn build-[componentName]'
 */
 
 // getting the name the component should get
@@ -25,6 +31,8 @@ let dir = './components/' + componentName;
 let jsName = dir + '/' + componentName + '.js';
 let cssName = dir + '/' + componentName + '.css';
 let storyName = './stories/' + componentName + '.stories.js';
+let packagejson = fs.readFileSync('./package.json', 'utf-8');
+let packagejsondata = JSON.parse(packagejson);
 
 
 
@@ -142,10 +150,20 @@ if(!fs.existsSync(cssName)) {
   console.log(`${componentName}.css was already in the folder...`.bgRed);
 }
 
-// creating a new story for the component
+// creating a new story for the component STORY
 if(!fs.existsSync(storyName)) {
   fs.writeFileSync(storyName, storyContent);
   console.log(`Wrote the start of your story in ${componentName}.stories.js!`.bgGreen);
 } else {
   console.log(`${componentName}.stories.js was already in the stories folder...`.bgRed);
 }
+
+// Adapting the package.json file to add a build function BUILD
+// ad a new script to the script
+let packagejsoncommand = `./node_modules/.bin/babel components/${componentName} --out-file components/${componentName}/dist/index.js`;
+packagejsondata.scripts[componentName + "-build"] = packagejsoncommand;
+// reverting the data to a string to write the file
+let packagejsonnew = JSON.stringify(packagejsondata, null, 2);
+// overwriting the old package.json with the new data
+fs.writeFileSync('./package.json', packagejsonnew);
+console.log(`The function \"build_${componentName}\" has been added to the scripts! use it to export your component!`);

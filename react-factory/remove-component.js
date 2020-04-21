@@ -10,6 +10,8 @@ var component = process.argv[2];
 component = component[0].toUpperCase() + component.slice(1);
 var dir = './components/' + component;
 var story = './stories/' + component + '.stories.js';
+let packagejson = fs.readFileSync('./package.json', 'utf-8');
+let packagejsondata = JSON.parse(packagejson);
 
 
 // see if the DIRECTORY AND CONTENT exists or not
@@ -27,3 +29,11 @@ if(fs.existsSync(story)) {
 } else {
   console.log(`The story ${component}.stories.js did not seem to exist...`.bgRed);
 }
+
+// removing the build command from the package.json
+delete packagejsondata.scripts["build_" + component];
+// reverting the data to a string to write the file
+let packagejsonnew = JSON.stringify(packagejsondata, null, 2);
+// overwriting the old package.json with the new data
+fs.writeFileSync('./package.json', packagejsonnew);
+console.log(`The function \"build_${component}\" has been removed from the scripts!`.bgGreen);

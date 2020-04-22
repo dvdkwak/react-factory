@@ -8,8 +8,10 @@ This will add the folowing:
 - will ad a build function so you can build the component with 'yarn build-[componentName]'
 */
 
-// getting the name the component should get
+// getting the name the component should get and getting the name without capital on the first letter
 let componentName = process.argv[2];
+let componentCleanName = componentName;
+componentCleanName = componentCleanName.toLowerCase();
 
 // counting the number of words in the given name
 let numberOfWords = componentName.split(" ").length;
@@ -33,6 +35,8 @@ let cssName = dir + '/' + componentName + '.css';
 let storyName = './stories/' + componentName + '.stories.js';
 let packagejson = fs.readFileSync('./package.json', 'utf-8');
 let packagejsondata = JSON.parse(packagejson);
+const Settings = require('./../settings.js');
+const { exec } = require("child_process");
 
 
 
@@ -135,11 +139,10 @@ if (!fs.existsSync(dir)){
   fs.mkdirSync(dir);
   console.log(`Created the component ${dir}!`.bgGreen);
 } else {
-  let error = new Error(`
-    The folder ${componentName} seems to already exist...
-    Try to remove this folder and it's contents first!
-  `);
-  console.log(error.bgRed);
+  console.log(`
+    The component ${componentName} seems to already exist...
+    Try to remove this component and it's contents first!`.bgRed);
+  return;
 }
 
 // In the folder we add a [componentName].js JAVASCRIPT
@@ -175,3 +178,35 @@ let packagejsonnew = JSON.stringify(packagejsondata, null, 2);
 // overwriting the old package.json with the new data
 fs.writeFileSync('./package.json', packagejsonnew);
 console.log(`The function \"build_${componentName}\" has been added to the scripts! use it to export your component!`.bgGreen);
+
+
+// calling the npm install function in the component folder to init it as a npm package
+// before we can create the package we need to set the package name without a capital letter
+exec(`npm init -y`, {cwd: `./components/${componentName}`}, (error, stdout, stderr) => {
+  if(error) {
+    console.log(`error: ${error.message}`);
+    return;
+  }
+  if(stderr) {
+    console.log(`stderr: ${stderr.message}`);
+    return;
+  }
+  console.log(`Following package.json has been generated:`.bgGreen);
+  console.log(`${stdout}`);
+});
+
+// after 1 second rewriting the just created package.json file so that the packagename starts with a small letter
+setTimeout(() => {
+  let alterpackagejson = fs.readFileSync(`./components/${componentName}/package.json`, 'utf-8');
+  let alterpackagejsondata = JSON.parse(alterpackagejson);
+  alterpackagejsondata.name = componentCleanName;
+  alterpackagejsondata.author = Settings.settings.author;
+  alterpackagejsondata.description = Settings.settings.description;
+  alterpackagejsondata.keywords = Settings.settings.keywords;
+  alterpackagejsondata.license = Settings.settings.license;
+  let alterpackagejsonnew = JSON.stringify(alterpackagejsondata, null, 2);
+  fs.writeFileSync(`./components/${componentName}/package.json`, alterpackagejsonnew);
+  console.log(`Creating the package.json was succesful!`.bgGreen);
+  console.log(`Name of the package: ${componentCleanName}`);
+  console.log(`new package.json looks like this: ${alterpackagejsonnew}`);
+}, 1000);

@@ -18,6 +18,9 @@ let packagejsondata = JSON.parse(packagejson);
 if(fs.existsSync(dir)) {
   del(dir);
   console.log(`${dir} has been removed!`.bgGreen);
+  console.log(`${component}.css has been removed!`.bgGreen);
+  console.log(`${component}.js has been removed!`.bgGreen);
+  console.log(`The package.json has been removed!`.bgGreen);
 } else {
   console.log(`The folder ${dir} did not seem to exist...`.bgRed);
 }

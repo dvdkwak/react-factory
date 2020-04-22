@@ -1,0 +1,20 @@
+/**
+ * Hi! This is the css which has been generated for you by the react-factory,
+ * In here you can start styling your super awesome component!
+ * Don't forget you can start live editing with the following:
+ * 
+ *  //--------------\\
+ * || yarn storybook ||
+ *  \\--------------//
+ * 
+ * Now you are ready to start! Happy Coding!
+ */
+
+.HelloWorld {
+  display: block;
+  background: red;
+  color: white;
+  font-size: 42px;
+  font-weight: 600;
+  text-align: center;
+}

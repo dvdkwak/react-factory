@@ -8,7 +8,8 @@
     "storybook": "start-storybook -p 6006",
     "add_component": "node ./react-factory/add-component.js",
     "remove_component": "node ./react-factory/remove-component.js",
-    "build_storybook": "build-storybook"
+    "build_storybook": "build-storybook",
+    "build_HelloWorld": "./node_modules/.bin/babel components/HelloWorld --out-file components/HelloWorld/dist/index.js"
   },
   "keywords": [
     "storybook",

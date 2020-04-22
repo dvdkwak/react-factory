@@ -1,0 +1,17 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "This is an awesome auto-generated component by react-factory!",
+  "main": "HelloWorld.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "awesome",
+    "automation",
+    "generated",
+    "react-factory"
+  ],
+  "author": "David Kwakernaak",
+  "license": "MIT"
+}

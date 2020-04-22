@@ -8,31 +8,25 @@ Install all needed dependecies.
 yarn install
 ```
 ## Basic Usage
-Start the development server
+To create your first component use the following command:
 ```bash
-yarn storiebooks
+yarn add_component [name]
 ```
-1. Build a component in the components folder.
-2. Create a new story for that component
-4. build the component
-```bash
-yarn build-[name of your component]
-```
-4. Creating a new command to build the component
-```bash
-./node_modules/.bin/babel path/to/your/component --out-file path/to/where/you/want/the/dist-version
-```
-## Making npm modules from your compononents
-first navigate to your component with terminal
-```bash
-cd components/yourComponent
-```
+This will generate a folder in the components folder with the name given.
+In the folder there will be generated the following:
+1. a javascript file with some basic react code
+2. a css file with some basic styling
+3. package.json to be able to import the project elsewhere
 
-then initialize as npm package
+Further there will be an automated build command to be able to build the package in the dist folder within your component folder.
 ```bash
-npm init
+yarn build_[name]
 ```
-
-To install the package into an other project use
+Lastly, a story is made in the stories folder for you to be able to live test your components with storybook. You can start storybook with the command:
 ```bash
-yarn add /path/to/component/package.json
+yarn storybook
+```
+When you want to remove your component:
+```bash
+yarn remove_component [name]
+```

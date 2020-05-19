@@ -30,3 +30,14 @@ When you want to remove your component:
 ```bash
 yarn remove_component [name]
 ```
+## The future
+In the future I want to create a good build function in order to build your component into a "final" folder which will be called build or something equivalent. In this folder will be the transpiled files of your component as well as a package.json for you in order to use it as a production package for your other projects.\
+However, Before I can realise this I need more knowledge and knowhow about react components in general, and mainly about how to use them in production environments.\
+\
+Right now there is a build "test" function which already does some of the job so you can experiment with that, but it is far from perfect yet.\
+\
+usage:
+```bash
+yarn build_[name]
+```
+(Where name is the name of your component)

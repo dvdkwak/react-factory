@@ -171,7 +171,7 @@ if(!fs.existsSync(storyName)) {
 
 // Adapting the package.json file to add a build function BUILD
 // ad a new script to the script
-let packagejsoncommand = `./node_modules/.bin/babel components/${componentName} --presets @babel/react --out-file components/${componentName}/dist/index.js`;
+let packagejsoncommand = `./node_modules/.bin/babel components/${componentName} --presets @babel/react,@babel/preset-env --out-file components/${componentName}/dist/index.js`;
 packagejsondata.scripts["build_" + componentName] = packagejsoncommand;
 // reverting the data to a string to write the file
 let packagejsonnew = JSON.stringify(packagejsondata, null, 2);

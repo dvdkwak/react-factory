@@ -169,16 +169,6 @@ if(!fs.existsSync(storyName)) {
   console.log(`${componentName}.stories.js was already in the stories folder...`.bgRed);
 }
 
-// Adapting the package.json file to add a build function BUILD
-// ad a new script to the script
-let packagejsoncommand = `./node_modules/.bin/babel components/${componentName} --presets @babel/react,@babel/preset-env --out-file components/${componentName}/dist/index.js`;
-packagejsondata.scripts["build_" + componentName] = packagejsoncommand;
-// reverting the data to a string to write the file
-let packagejsonnew = JSON.stringify(packagejsondata, null, 2);
-// overwriting the old package.json with the new data
-fs.writeFileSync('./package.json', packagejsonnew);
-console.log(`The function \"build_${componentName}\" has been added to the scripts! use it to export your component!`.bgGreen);
-
 
 // calling the npm install function in the component folder to init it as a npm package
 // before we can create the package we need to set the package name without a capital letter
@@ -204,6 +194,7 @@ setTimeout(() => {
   alterpackagejsondata.description = Settings.settings.description;
   alterpackagejsondata.keywords = Settings.settings.keywords;
   alterpackagejsondata.license = Settings.settings.license;
+  alterpackagejsondata.main = Settings.settings.main;
   let alterpackagejsonnew = JSON.stringify(alterpackagejsondata, null, 2);
   fs.writeFileSync(`./components/${componentName}/package.json`, alterpackagejsonnew);
   console.log(`Creating the package.json was succesful!`.bgGreen);

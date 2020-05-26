@@ -9,7 +9,7 @@
     "add_component": "node ./react-factory/add-component.js",
     "remove_component": "node ./react-factory/remove-component.js",
     "build_storybook": "build-storybook",
-    "build_HelloWorld": "./node_modules/.bin/babel components/HelloWorld --out-file components/HelloWorld/dist/index.js"
+    "build_component": "node ./react-factory/build-component.js"
   },
   "keywords": [
     "storybook",
@@ -39,6 +39,8 @@
     "babel-preset-minify": "^0.5.1"
   },
   "dependencies": {
+    "@node-minify/clean-css": "^5.3.0",
+    "@node-minify/core": "^5.3.0",
     "colors": "^1.4.0",
     "del": "^5.1.0",
     "fs": "^0.0.1-security"

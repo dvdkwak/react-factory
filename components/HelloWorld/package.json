@@ -2,7 +2,7 @@
   "name": "helloworld",
   "version": "1.0.0",
   "description": "This is an awesome auto-generated component by react-factory!",
-  "main": "HelloWorld.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

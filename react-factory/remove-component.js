@@ -32,11 +32,3 @@ if(fs.existsSync(story)) {
 } else {
   console.log(`The story ${component}.stories.js did not seem to exist...`.bgRed);
 }
-
-// removing the build command from the package.json
-delete packagejsondata.scripts["build_" + component];
-// reverting the data to a string to write the file
-let packagejsonnew = JSON.stringify(packagejsondata, null, 2);
-// overwriting the old package.json with the new data
-fs.writeFileSync('./package.json', packagejsonnew);
-console.log(`The function \"build_${component}\" has been removed from the scripts!`.bgGreen);

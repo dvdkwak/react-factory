@@ -34,4 +34,4 @@ yarn remove_component [name]
 ## The future
 For now the most important action on my list is testing the compatibility of react-factory with frameworks like react-app itself. I will try to import react-factory made components into a react-app in order to see if they are compatible.\
 \
-Next up is to make up a good name for this package to be able to give it a brand, but before that step I want to check in on compagnies to learn more about react development in general to "test" wether my philosophy i actually plausible.
+Next up is to make up a good name for this package to be able to give it a brand, but before that step I want to check in on compagnies to learn more about react development in general to "test" wether my philosophy is actually plausible.
